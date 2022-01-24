@@ -6,7 +6,7 @@ use ieee.std_logic_1164.all;
 entity gt2bit is
 port(a, b: in std_logic_vector(1 downto 0);
 		y: out std_logic);
-end entity;
+end gt2bit;
 
 architecture arq_gt2bit of gt2bit is
 	signal s0, s1, s2: std_logic;
@@ -15,7 +15,7 @@ begin
     s1 <= a(0) and not(b(1)) and not(b(0));
     s2 <= a(1) and a(0) and not(b(0));
     y <= s0 or s1 or s2;
-end architecture;
+end arq_gt2bit;
 
 
 -- Code your testbench here

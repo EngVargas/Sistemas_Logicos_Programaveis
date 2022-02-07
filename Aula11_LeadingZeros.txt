@@ -1,11 +1,10 @@
-
 -- Code your design here
 -- Código VHDL:
 library ieee;
 use ieee.std_logic_1164.all;
 
 entity LZ is
-   generic(N: integer := 4);		--entrada com 4-bit
+   generic(N: integer := 4);	--entrada com 4-bit (16 valores: 0~15)
    port(x: in std_logic_vector(N-1 downto 0);
         y: out integer range 0 to N);
 end entity;
@@ -16,16 +15,15 @@ begin
       variable temp: integer range 0 to N; --variável temporária
    begin
       temp := 0;
-      --for i in x'range loop
-      --for i in 0 to N-1 loop
-      for i in N-1 downto 0 loop
+      --for i in x'range loop		--Ok
+      --for i in 0 to N-1 loop		--erro
+      for i in N-1 downto 0 loop	--VHDL varre da maior para menor
          exit when x(i) = '1';	--testa se temos um 1 na posição i
          temp := temp + 1;
       end loop;
       y <= temp;  				--guarda o valor da variável no signal
    end process;
 end architecture;
-
 
 
 -- Code your testbench here

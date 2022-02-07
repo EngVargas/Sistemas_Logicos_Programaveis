@@ -1,3 +1,4 @@
+
 -- Code your design here
 -- Código VHDL:
 library ieee;
@@ -26,6 +27,7 @@ begin
 end architecture;
 
 
+
 -- Code your testbench here
 -- Testbench para simulação:
 library ieee;
@@ -42,9 +44,8 @@ architecture arq_tb_LZ of tb_LZ is
 begin
 
    uut: entity work.LZ(arq_LZ)
-        generic map(M)
-        port map(tx, ty);
-
+        generic map(M) port map(x=>tx, y=>ty);
+        
    process
      variable i: integer range 0 to 2**M-1;
      begin
